@@ -46,7 +46,10 @@ require_once "libraries/koneksi.php";
 require_once "libraries/fungsi.php";
 
 // ambil data modul
-$sql = "select * from modul where deleted_at is null";
+$sql = "select m.* 
+from modul_role as mr
+join modul as m on m.id_modul=mr.id_modul
+where mr.id_role=".$_SESSION['id_role']." and mr.deleted_at is null and m.deleted_at is null";
 $menu = mysqli_query($koneksi, $sql);
 ?>
 

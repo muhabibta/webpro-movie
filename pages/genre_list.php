@@ -1,7 +1,7 @@
 <?php
-    if (defined("GELANG")===false) {
-       die("Anda tidak boleh mengakses halaman ini secara langsung!");
-    }
+if (defined("GELANG") === false) {
+    die("Anda tidak boleh mengakses halaman ini secara langsung!");
+}
 ?>
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2 fw-bold">List Genre</h1>
@@ -18,9 +18,11 @@
     </div>
 </div>
 <?php
-    $sql = "select * from genre where deleted_at is null";
-    $result = mysqli_query($koneksi,$sql);
-    ?>
+$sql = "select * from genre where deleted_at is null";
+$result = mysqli_query($koneksi, $sql);
+$is_boleh_edit = cek_akses($koneksi, 1, $_SESSION['id_role'], "update");
+$is_boleh_hapus = cek_akses($koneksi, 1, $_SESSION['id_role'], "delete");
+?>
 <p>This is List Genre page.</p>
 <table class="table table-striped">
     <tr>
@@ -29,17 +31,24 @@
         <th width="20%">Action</th>
     </tr>
     <?php
-        $no=0;
-        foreach($result as $res){
-            $no++;
-            echo '<tr>
-            <td class="text-center">'.$no."</td>
-            <td>".$res['nama_genre']."</td>
+$no = 0;
+foreach ($result as $res) {
+    $no++;
+    $btn = [];
+    if ($is_boleh_edit == true) {
+        $btn[] = "<a href='?page=genre_edit&id_genre=" . $res['id_genre'] . "' class='btn btn-sm btn-info'>Edit</a>";
+    }
+    if ($is_boleh_hapus == true) {
+        $btn[] = "<a href='?page=genre_delete&id_genre=" . $res['id_genre'] . "' class='btn btn-sm btn-danger'>Hapus</a>";
+    }
+
+    echo '<tr>
+            <td class="text-center">' . $no . "</td>
+            <td>" . $res['nama_genre'] . "</td>
             <td>
-            <a href='?page=genre_edit&id_genre=".$res['id_genre']."' class='btn btn-sm btn-info'>Edit</a>
-            <a href='?page=genre_delete&id_genre=".$res['id_genre']."' class='btn btn-sm btn-danger'>Hapus</a>
+                " . implode(" ", $btn) . "
             </td>
             </tr>";
-        }
-        ?>
+}
+?>
 </table>
