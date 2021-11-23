@@ -40,15 +40,15 @@ session_start()
 
 <body>
     <?php
-      define("GELANG", true);
+define("GELANG", true);
 
-      require_once "libraries/koneksi.php";
-      require_once "libraries/fungsi.php";
+require_once "libraries/koneksi.php";
+require_once "libraries/fungsi.php";
 
-      // ambil data modul
-      $sql = "select * from modul where deleted_at is null";
-      $menu = mysqli_query($koneksi, $sql);
-    ?>
+// ambil data modul
+$sql = "select * from modul where deleted_at is null";
+$menu = mysqli_query($koneksi, $sql);
+?>
 
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Movie Database</a>
@@ -119,7 +119,7 @@ if (in_array($halaman, $page_public) == false) {
     }
 }
 
-if (strpos($halaman, "_") !== false) {
+if (in_array($halaman, $page_public) == false && strpos($halaman, "_") !== false) {
 
     // pengecekan otorisasi
     // action di database: create, read, update, delete, save
@@ -133,8 +133,11 @@ if (strpos($halaman, "_") !== false) {
         'save' => 'save',
     ];
 
+    // memisahkan string halaman berdasarkan _
     $exp_halaman = explode("_", $halaman);
+    // mengambil string action
     $action = $exp_halaman[1];
+    // mengambil string modul
     $modul = $exp_halaman[0];
 
     $action_modul = $map_action_modul[$action];
@@ -148,7 +151,13 @@ if (strpos($halaman, "_") !== false) {
 
     // cek di database
     $sql = "select * from modul_role where id_modul=$id_modul and id_role=$id_role and is_$action_modul=1 and deleted_at is null";
-    $data_modul_role;
+    $data_modul_role = mysqli_query($koneksi, $sql);
+
+    if (mysqli_num_rows($data_modul_role) == 0) {
+        // tidak memiliki hak akses
+        redirect('?page=403');
+        exit;
+    }
 }
 
 require_once "pages/" . $halaman . ".php";
