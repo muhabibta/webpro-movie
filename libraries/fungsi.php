@@ -11,6 +11,15 @@ function cek_akses($koneksi, $id_modul, $id_role, $action_modul)
     return true;
 }
 
+function get_last_id($koneksi)
+{
+    $sql = "select last_insert_id() as last_id";
+    $result = mysqli_query($koneksi,$sql);
+    $row = mysqli_fetch_assoc($result);
+
+    return $row['last_id'];
+}
+
 function save_data($koneksi, $nama_tabel, $data)
 {
     $sql = "INSERT INTO " . $nama_tabel . " (";

@@ -133,6 +133,8 @@ if (in_array($halaman, $page_public) == false && strpos($halaman, "_") !== false
         'update' => 'update',
         'list' => 'read',
         'cetakpdf' => 'read',
+        'excel' => 'read',
+        'word' => 'read',
         'save' => 'save',
     ];
 
