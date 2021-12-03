@@ -45,12 +45,7 @@ define("GELANG", true);
 require_once "libraries/koneksi.php";
 require_once "libraries/fungsi.php";
 
-// ambil data modul
-$sql = "select m.* 
-from modul_role as mr
-join modul as m on m.id_modul=mr.id_modul
-where mr.id_role=".$_SESSION['id_role']." and mr.deleted_at is null and m.deleted_at is null";
-$menu = mysqli_query($koneksi, $sql);
+
 ?>
 
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -61,6 +56,14 @@ $menu = mysqli_query($koneksi, $sql);
             <span class="navbar-toggler-icon"></span>
         </button>
         <?php if (isset($_SESSION['is_logged_in'])): ?>
+            <?php
+            // ambil data modul
+                $sql = "select m.* 
+                from modul_role as mr
+                join modul as m on m.id_modul=mr.id_modul
+                where mr.id_role=".$_SESSION['id_role']." and mr.deleted_at is null and m.deleted_at is null";
+                $menu = mysqli_query($koneksi, $sql);
+            ?>
         <span class="navbar-text ms-auto fw-bold">
             Welcome, <?php echo $_SESSION['nama']; ?>!
         </span>
