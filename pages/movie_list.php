@@ -7,7 +7,9 @@ if (defined("GELANG") === false) {
     <h1 class="h2 fw-bold">List Movie</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
         <a href="?page=movie_create" type="button" class="btn btn-sm btn-outline-secondary me-2">Tambah Data</a>
-        <a href="?page=movie_excel" type="button" class="btn btn-sm btn-outline-secondary">Export XLSX</a>
+        <a href="?page=movie_excel" type="button" class="btn btn-sm btn-outline-secondary me-2">Export XLSX</a>
+        <a href="?page=movie_chart" type="button" class="btn btn-sm btn-outline-secondary me-2">Data Chart</a>
+        <a href="?page=movie_pdf" type="button" class="btn btn-sm btn-outline-secondary">Export PDF</a>
     </div>
 </div>
 <?php

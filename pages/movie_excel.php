@@ -37,6 +37,8 @@ while($row=mysqli_fetch_assoc($result)){
 $writer = new Xlsx($spreadsheet);
 $writer->save('movie.xlsx');
 
+redirect('?page=movie_list');
+
 // header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 // header('Content-Disposition: attachment; filename="movie.xlsx"');
 // $writer->save('php://output');

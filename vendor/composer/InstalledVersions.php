@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '9eecf5527530447285893ad3269a9b4333fc63a5',
+    'reference' => '880750f623ed0900f5076d4e61eed476533d5bdc',
     'name' => '__root__',
   ),
   'versions' => 
@@ -42,7 +42,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '9eecf5527530447285893ad3269a9b4333fc63a5',
+      'reference' => '880750f623ed0900f5076d4e61eed476533d5bdc',
     ),
     'ezyang/htmlpurifier' => 
     array (
@@ -160,6 +160,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '9174a3d80210dca8daa7f31fec659150bbeabfc6',
+    ),
+    'tecnickcom/tcpdf' => 
+    array (
+      'pretty_version' => '6.4.2',
+      'version' => '6.4.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '172540dcbfdf8dc983bc2fe78feff48ff7ec1c76',
     ),
   ),
 );
