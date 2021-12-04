@@ -7,14 +7,8 @@ if (defined("GELANG") === false) {
     <h1 class="h2 fw-bold">List Genre</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group me-2">
-            <a href="?page=genre_create" type="button" class="btn btn-sm btn-outline-secondary">Tambah Data</a>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+            <a href="?page=genre_create" type="button" class="btn btn-sm btn-outline-secondary"><ion-icon style="vertical-align: middle;font-size:18px;" name="add-circle-outline"></ion-icon> Tambah Data</a>
         </div>
-        <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-            <span data-feather="calendar"></span>
-            This week
-        </button>
     </div>
 </div>
 <?php
@@ -23,7 +17,7 @@ $result = mysqli_query($koneksi, $sql);
 $is_boleh_edit = cek_akses($koneksi, 1, $_SESSION['id_role'], "update");
 $is_boleh_hapus = cek_akses($koneksi, 1, $_SESSION['id_role'], "delete");
 ?>
-<p>This is List Genre page.</p>
+<p>Daftar genre Movie Database</p>
 <table class="table table-striped">
     <tr>
         <th width="50px" class="text-center">No.</th>
@@ -36,10 +30,10 @@ foreach ($result as $res) {
     $no++;
     $btn = [];
     if ($is_boleh_edit == true) {
-        $btn[] = "<a href='?page=genre_edit&id_genre=" . $res['id_genre'] . "' class='btn btn-sm btn-info'>Edit</a>";
+        $btn[] = "<a href='?page=genre_edit&id_genre=" . $res['id_genre'] . "' class='btn btn-sm btn-outline-primary'><ion-icon name='create-outline'></ion-icon> Edit</a>";
     }
     if ($is_boleh_hapus == true) {
-        $btn[] = "<a href='?page=genre_delete&id_genre=" . $res['id_genre'] . "' class='btn btn-sm btn-danger'>Hapus</a>";
+        $btn[] = "<a href='?page=genre_delete&id_genre=" . $res['id_genre'] . "' class='btn btn-sm btn-outline-danger'><ion-icon name='remove-circle-outline'></ion-icon> Hapus</a>";
     }
 
     echo '<tr>

@@ -21,7 +21,9 @@
         <input type="hidden" name="id_genre" value="<?= $row['id_genre'];?>"/>
         <div class="mb-3">
             <label for="AddGenre" class="form-label">Nama Genre</label>
-            <input type="text" id="AddGenre" name="nama_genre" value="<?= $row['nama_genre'];?>" class="form-control">
         </div>
-        <button type="submit" class="btn btn-success">Update Data</button>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control"  value="<?= $row['nama_genre'];?>" name="nama_genre"  aria-describedby="button-addon2">
+          <button class="btn btn-outline-success" type="submit" id="button-addon2">Update Data</button>
+        </div>
     </form>

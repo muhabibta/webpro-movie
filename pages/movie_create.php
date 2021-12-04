@@ -7,7 +7,7 @@
     <h1 class="h2 fw-bold">Form Movie</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group me-2">
-            <a href="?page=movie_list" type="button" class="btn btn-sm btn-outline-secondary">Kembali</a>
+            <a href="?page=movie_list" type="button" class="btn btn-sm btn-outline-secondary"><ion-icon style="vertical-align:middle; font-size:16px;" name="chevron-back-outline"></ion-icon> Kembali</a>
         </div>
     </div>
 </div>
@@ -33,9 +33,9 @@
         <?php
         while($row = mysqli_fetch_assoc($genre))
         {
-            echo"<input type='checkbox' name='genre[]' value='".$row['id_genre']."'/>".$row['nama_genre']."</br>";
+            echo"<input type='checkbox' name='genre[]' value='".$row['id_genre']."'/> ".$row['nama_genre']."</br>";
         }
         ?>
     </div>
-    <button type="submit" class="btn btn-primary">Simpan Data</button>
+    <button type="submit" class="btn btn-outline-primary">Simpan Data</button>
 </form>

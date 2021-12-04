@@ -4,8 +4,9 @@ if (defined("GELANG") === false) {
 }
 ?>
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2 fw-bold">Movie Chart</h1>
+    <h1 class="h2 fw-bold">Data Movie Chart</h1>
 </div>
+<p>Grafik data film tahunan</p>
 <?php
     $sql="select tahun,count(*) as num from movie group by tahun";
     $result = mysqli_query($koneksi,$sql);
